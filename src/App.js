@@ -1,4 +1,4 @@
-import data from "./Data";
+//import data from "./Data";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import { MovieList } from "./MovieList";
@@ -10,11 +10,11 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact>
-          <MovieList data={data} />
+          <MovieList />
         </Route>
 
         <Route path="/movies" exact>
-          <MovieList data={data} />
+          <MovieList />
         </Route>
 
         <Route path="/movies/:movieId" exact>
