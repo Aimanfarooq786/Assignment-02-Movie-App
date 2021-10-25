@@ -6,12 +6,7 @@ export class MovieList extends Component {
     return (
       <div>
         <div id="title">
-          List Filtering: <input type="text" placeholder="Title Search" />
-          {this.props.data
-            .filter((movieName) => movieName.Title)
-            .map((filteredTitle) => (
-              <li>{filteredTitle.Title}</li>
-            ))}
+          <h1>Movie App</h1>
         </div>
         <div id="show">
           {this.props.data.map((d, i) => {

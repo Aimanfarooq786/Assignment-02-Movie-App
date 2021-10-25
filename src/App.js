@@ -13,10 +13,6 @@ function App() {
           <MovieList data={data} />
         </Route>
 
-        <Route path="/movies" exact>
-          <MovieList data={data} />
-        </Route>
-
         <Route path="/movies/:movieId" exact>
           <MovieDescription />
         </Route>
