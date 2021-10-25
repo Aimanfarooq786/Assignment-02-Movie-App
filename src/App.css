@@ -7,7 +7,7 @@
 
 #title {
   background-color: rgb(37, 228, 20);
-  height: 70px;
+  height: 120px;
   width: 270vh;
   padding-top: 30px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -20,13 +20,21 @@
 
 #clr {
   background-color: rgb(209, 183, 148);
-  width: 25vw;
+  width: 30vw;
+
   list-style: none;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+#fvrt {
+  list-style: none;
+  background-color: red;
+
+  margin-right: 10rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,29 +1,24 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter,  Link } from "react-router-dom";
-export class MovieDescription extends Component {
-  constructor(props) {
-    super(props)
+
+function MovieDescription(props) {
+  const [descData, setDescData] = useState([]);
   
-    this.state = {
-       descData:[]
-    }
-  }
-  componentDidMount(){
-    const moviesId = this.props.match.params.movieId;
+  useEffect(() => {
+    const moviesId = props.match.params.movieId;
     axios.get(`https://api.themoviedb.org/3/movie/${moviesId}?api_key=a07dba856632c11465f0e933f170c48a&language=en-US`)
     .then(details =>{
       console.log(details.data);
-      this.setState({descData: details.data})
+      setDescData(details.data);
+      console.log(descData);
     })
     .catch(error =>{
       console.log('ERROR FOUND');
     })
-  }
-  render() {
-    const {descData}= this.state;
-    return (
+  })
 
+    return (
       <div id="description">
 
                 <h1 id="home"> {descData.title}   </h1> <br/><br/>
@@ -37,7 +32,7 @@ export class MovieDescription extends Component {
                 </div>
       </div>
     );
-  }
+  
 }
 
 export default withRouter(MovieDescription);
