@@ -27,7 +27,7 @@ function MovieDescription(props) {
                 <p> <b class="bold">Release Date: </b>   {descData.release_date}</p> <br/><br/>
                 <p> <b class="bold">Popularity: </b>   {descData.popularity}</p> <br/><br/>
        
-                <div id="btn">
+                <div  className= "btn btn-warning" >
                 <Link  to= {`/movies/${descData.id}/reviews`}> <b> Show Reviews </b> </Link>
                 </div>
       </div>

@@ -1,31 +1,45 @@
-import React, { useContext } from "react";
-import { FavoriteContext } from "./App";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { connect } from "react-redux";
+import { addToFav } from "./services/Actions/action";
 
-function Favourites() {
-  const fvrt = useContext(FavoriteContext);
-  console.log("fav", fvrt.favMovies);
-  const history = useHistory();
+const Favourites = (props) => {
+  const fav = props.data.favMovieSection.favData;
+  console.log("FAVV", fav);
+
   return (
     <div>
-      <h1>
-        Favorites Page:{" "}
-        {fvrt.favMovies.map((f) => {
+      <h1>FAV SECTION</h1>
+      <h1>{fav.release_date}</h1>
+
+      <div id="show">
+        {fav.map((d, i) => {
           return (
-            <div id="show" key={f.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${f.poster_path}`}
-                alt="poster"
-              />
-              <h3> {f.title} </h3>
-              <h3> {f.id} </h3>
-            </div>
+            <ul>
+              <li key={i} id="clr">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${d.poster_path}`}
+                  alt="poster"
+                />
+
+                <h3> Title: {d.title}</h3>
+                <p>
+                  <b id="yr">Release Date:</b> {d.release_date}
+                </p>
+                <p>
+                  <b id="id">Id:</b> {d.id}
+                </p>
+                <p>
+                  <b id="typ">Language:</b> {d.original_language}
+                </p>
+              </li>
+            </ul>
           );
         })}
-      </h1>
-
-      <button onClick={() => history.push("/")}>Go back</button>
+      </div>
     </div>
   );
-}
-export default Favourites;
+};
+const mapStateToProps = (state) => ({
+  data: state,
+});
+export default connect(mapStateToProps, null)(Favourites);
