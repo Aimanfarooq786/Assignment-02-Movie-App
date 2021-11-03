@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
+import { PIC_URL } from "./Url";
 
 export class MovieList extends Component {
   constructor(props) {
@@ -12,9 +13,12 @@ export class MovieList extends Component {
     };
   }
   componentDidMount() {
+   console.log("ENV", process.env);
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=a07dba856632c11465f0e933f170c48a&language=en-US&page=1`
+         `${process.env.REACT_APP_MOVIELIST_API}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+        //`${process.env.REACT_APP_MOVIELIST_API}`
+       // process.env.REACT_APP_MOVIELIST_API
       )
       .then((response) => {
         console.log(response.data.results);
@@ -22,7 +26,7 @@ export class MovieList extends Component {
       })
 
       .catch((error) => {
-        console.log("ERROR");
+        console.log("Movielist ERROR", error);
       });
   }
 
@@ -40,7 +44,7 @@ export class MovieList extends Component {
               <ul>
                 <li key={i} id="clr">
                   <Link to={`/movies/${d.id}`}>
-                    <img src={`https://image.tmdb.org/t/p/w500${d.poster_path}`} alt="poster" />
+                    <img src={`${PIC_URL}${d.poster_path}`} alt="poster" />
                   </Link>
                   <h3> Title: {d.title}</h3>
                   <p>

@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { withRouter,  Link } from "react-router-dom";
+import { PIC_URL } from "./Url";
+
 export class MovieDescription extends Component {
   constructor(props) {
     super(props)
@@ -11,7 +13,7 @@ export class MovieDescription extends Component {
   }
   componentDidMount(){
     const moviesId = this.props.match.params.movieId;
-    axios.get(`https://api.themoviedb.org/3/movie/${moviesId}?api_key=a07dba856632c11465f0e933f170c48a&language=en-US`)
+    axios.get(`${process.env.REACT_APP_MOVIE_BASE_URL}${moviesId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then(details =>{
       console.log(details.data);
       this.setState({descData: details.data})
@@ -27,7 +29,7 @@ export class MovieDescription extends Component {
       <div id="description">
 
                 <h1 id="home"> {descData.title}   </h1> <br/><br/>
-                <img src= {`https://image.tmdb.org/t/p/w500${descData.poster_path}`} alt="poster" />
+                <img src= {`${PIC_URL}${descData.poster_path}`} alt="poster" />
                 <p><b class="bold" >Overview</b> <br/><br/> {descData.overview}  </p> <br/><br/>
                 <p> <b class="bold">Release Date: </b>   {descData.release_date}</p> <br/><br/>
                 <p> <b class="bold">Popularity: </b>   {descData.popularity}</p> <br/><br/>
