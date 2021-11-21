@@ -20,7 +20,7 @@ function MovieDescription(props) {
 
     return (
       <div id="description">
-
+                         <h1 style= {{color:'red', fontStyle: 'oblique', fontFamily: 'fantasy'}}> <center>MOVIE DETAIL</center></h1>
                 <h1 id="home"> {descData.title}   </h1> <br/><br/>
                 <img src= {`https://image.tmdb.org/t/p/w500${descData.poster_path}`} alt="poster" />
                 <p><b class="bold" >Overview</b> <br/><br/> {descData.overview}  </p> <br/><br/>

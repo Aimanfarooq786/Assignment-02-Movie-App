@@ -8,7 +8,7 @@ const Favourites = (props) => {
 
   return (
     <div>
-      <h1>FAV SECTION</h1>
+      <h1 style= {{color:'red', fontStyle: 'oblique', fontFamily: 'fantasy'}}> <center> FAV SECTION </center> </h1>
       <h1>{fav.release_date}</h1>
 
       <div id="show">
@@ -41,5 +41,6 @@ const Favourites = (props) => {
 };
 const mapStateToProps = (state) => ({
   data: state,
+ // favMovieSection
 });
-export default connect(mapStateToProps, null)(Favourites);
+export default connect(mapStateToProps, null)(Favourites);  //CONNECT use to connect our redux store with compo

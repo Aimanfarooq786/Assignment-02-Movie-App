@@ -14,7 +14,7 @@ function MovieList(props) {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=a07dba856632c11465f0e933f170c48a&language=en-US&page=1`
+        `${process.env.REACT_APP_MOVIELIST_API}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
       )
       .then((response) => {
         setMovieList(response.data.results);
@@ -31,7 +31,7 @@ function MovieList(props) {
     setSearch(e.target.value);
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=a07dba856632c11465f0e933f170c48a&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
       )
 
       .then((response) => {
@@ -113,4 +113,4 @@ function MovieList(props) {
 const mapDispatchToProps = (dispatch) => ({
   addToFavHandler: (data) => dispatch(addToFav(data)),
 });
-export default connect(null, mapDispatchToProps)(MovieList);
+export default connect(null, mapDispatchToProps)(MovieList); 

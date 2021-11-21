@@ -21,6 +21,7 @@ function ReviewsData(props) {
 
   return (
     <div>
+       <h1 style= {{color:'red', fontStyle: 'oblique', fontFamily: 'fantasy'}}> <center> REVIEWS </center></h1>
       <center>
         <table>
           <th>Author</th>
